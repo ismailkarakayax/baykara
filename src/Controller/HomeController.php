@@ -32,7 +32,7 @@ class HomeController extends AbstractController
 
 
     /**
-     * @Route("/")
+     * @Route("/try")
      */
     public function addCity(Request $request)
     {
@@ -61,7 +61,7 @@ class HomeController extends AbstractController
 
 
     /**
-     * @Route("/delete/{id?}")
+     * @Route("/trydelete/{id?}")
      */
     public function deleteCity(int $id,Request $request)
     {
@@ -77,7 +77,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/list" ,name="city_list")
+     * @Route("/trylist" ,name="city_list")
      * @param $list
      * @param Request $request
      * @return Response
@@ -94,7 +94,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route ("/city/{id?}",name="see_product")
+     * @Route ("/trycity/{id?}",name="see_product")
      */
     public function findCity(int $id): Response
     {
@@ -114,7 +114,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/addcity",name="create_product")
+     * @Route("/tryaddcity",name="create_product")
      * @return Response
      * @throws \Doctrine\ORM\Exception\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
@@ -133,6 +133,29 @@ class HomeController extends AbstractController
 
         return new Response('Saved new product with id ' . $city->getName());
 
+    }
+
+    /**
+     * @Route ("/tryupdate/{id?}",name="update_product")
+     * @return Response
+     */
+    public function updateCity(int $id){
+
+        $cityRepo=$this->cityRepo;
+        $em=$this->em;
+
+        $product = $cityRepo->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $product->setName('siirt');
+
+        $em->flush();
+        return new Response('updated product with name ' . $product->getName());
     }
 
 
