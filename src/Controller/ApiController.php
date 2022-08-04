@@ -101,6 +101,7 @@ class ApiController extends AbstractController
 
         $cityList=$cityRepo->findAll();
 
-        return $this->json([$city]);
+
+        return $this->json($cityList);
     }
 }
