@@ -3,7 +3,7 @@
 {% block title %}City List{% endblock %}
 
 {% block content %}    
-<div class="content-wrapper">
+
      <div class="row">
           <div class="col-12">
             <div class="card">
@@ -24,29 +24,18 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+                <table class="table table-head-fixed text-nowrap" >
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
+                      <th>Action</th>
                      
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tblist">
                     
-                    <tr>
-
-                      <td>a</td>
-                      <td>a</td>
-                      
-                      <td>
-                        <a href="" class="btn btn-info">Update</a>
-                       </td>
-                       <td>
-                        <a href="" class="btn btn-danger">Delete</a>
-                       </td>
-
-                    </tr>
+                   
                   </tbody>
                 </table>
               </div>
@@ -55,6 +44,8 @@
             <!-- /.card -->
           </div>
         </div>
-</div>
+
 
 {% endblock %}
+
+ 
