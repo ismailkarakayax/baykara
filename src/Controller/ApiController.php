@@ -32,7 +32,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/city",name="app.city.add",methods={"POST"})
+     * @Route("/cityAdd",name="app.city.add",methods={"POST"})
      * @OA\Parameter(name="name",in="query",required=true)
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
