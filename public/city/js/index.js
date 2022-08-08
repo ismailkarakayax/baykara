@@ -1,4 +1,8 @@
 
+$(document).ready(function(){
+    getlist();
+});
+
 function getlist()
 {
     var id;
@@ -15,7 +19,7 @@ function getlist()
         table.empty();
 
         result.forEach(element => {
-            table.append('<tr><td>'+element.id+'</td><td>'+element.title+'</td><td><a class="btn btn-primary" onclick="getCity('+element.id+')">Update</a></td><td><a class="btn btn-warning" onclick="deletePost('+element.id+')">Delete</a></td></tr>');
+            table.append('<tr><td>'+element.id+'</td><td>'+element.title+'</td><td><a class="btn btn-primary" onclick="">Update</a></td><td><a class="btn btn-warning" onclick="deletePost('+element.id+')">Delete</a></td></tr>');
        });
     },
     error: function(err){
@@ -23,28 +27,6 @@ function getlist()
     }
    })
 
-}
-
-function getCity(id)
-{
-    var cityid; var name;
-    location.href="/updateCity";
-    $.ajax({
-    url: 'https://jsonplaceholder.typicode.com/posts/'+id,
-    type: "GET",
-    success: function(result){
-      
-        console.log(result);
-        $('#updateid').val(result.id);
-        $('#updatename').val(result.title);
-       
-    },
-    error: function(err){
-        console.log(err);
-    }
-   })
-
-  
 }
 
 
@@ -67,4 +49,36 @@ function deletePost(id)
        })
 
 
+}
+
+
+function CreatePost()
+{
+  if(ocument.getElementById("inputname").value=="")
+  {
+    alert("name alanını boş bırakmayınız")
+  }
+  else
+  {
+    var name=document.getElementById("inputname").value
+
+    $.ajax({
+        url: 'http://localhost:3000/posts',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            name:name
+        },
+        success: function(data){
+            console.log(data);
+            alert("post kayıt edildi");
+            
+    
+        },
+        error: function(err){
+            console.log(err);
+        }
+       })
+  }
+    
 }
