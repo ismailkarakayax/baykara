@@ -83,9 +83,6 @@ function CreatePost()
 }
 
 
-
-
-
 // document.getElementById("updatebtn").addEventListener("click",function(){
 //     document.querySelector(".popup").style.display="flex";
 // })
