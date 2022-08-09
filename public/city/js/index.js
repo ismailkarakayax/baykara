@@ -19,7 +19,7 @@ function getlist()
         table.empty();
 
         result.forEach(element => {
-            table.append('<tr><td>'+element.id+'</td><td>'+element.name+'</td><td><a class="btn btn-primary" onclick="">Update</a></td><td><a class="btn btn-warning" onclick="deletePost('+element.id+')">Delete</a></td></tr>');
+            table.append('<tr><td>'+element.id+'</td><td>'+element.name+'</td><td><a class="btn btn-primary" onclick="popupOpen('+element.id+')">Update</a></td><td><a class="btn btn-warning" onclick="deletePost('+element.id+')">Delete</a></td></tr>');
        });
     },
     error: function(err){
@@ -80,4 +80,63 @@ function CreatePost()
        })
   }
     
+}
+
+
+function UpdatePost()
+{
+    var id=document.getElementById("updateId").value
+    var name=document.getElementById("updatename").value
+
+    $.ajax({
+        url: 'http://localhost:3000/posts/'+id,
+        method: 'PUT',
+        data:{
+            name:name
+        },
+        success: function(result){
+            console.log(result);
+            alert("post güncellendi")
+            
+            
+
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })   
+}
+
+
+// document.getElementById("updatebtn").addEventListener("click",function(){
+//     document.querySelector(".popup").style.display="flex";
+// })
+
+function popupOpen(id)
+{
+   
+
+    $.ajax({
+        url: 'http://localhost:3000/posts/'+id,
+        type: "GET",
+        dataType:'json',
+        success: function(result){
+            console.log(result)
+            document.querySelector(".popup").style.display="flex";
+            // localStorage.setItem("dataupdateid",result.id);
+            // localStorage.setItem("dataupdate",result.name);
+            // location.href="C:/Users/ISMAILBAYRAM/Desktop/deneme/update.html";
+            document.getElementById("updateId").value=result.id;
+            document.getElementById("updatename").value=result.name;
+
+        },
+        error: function(err){
+            console.log(err);
+        }
+       })
+}
+
+function popupClose()
+{
+    document.querySelector(".popup").style.display="none";
 }

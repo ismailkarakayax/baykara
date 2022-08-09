@@ -30,14 +30,7 @@ class HomeController extends AbstractController
     }
 
 
-     /**
-     * @Route("/updateCity",name="app.update")
-     * @return mixed
-     */
-    public function mainPage4()
-    {
-        return $this->render('home/update.html.twig');
-    }
+    
 }
 
 
