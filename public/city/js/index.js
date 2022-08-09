@@ -83,29 +83,7 @@ function CreatePost()
 }
 
 
-function UpdatePost()
-{
-    var id=document.getElementById("updateId").value
-    var name=document.getElementById("updatename").value
 
-    $.ajax({
-        url: 'http://localhost:3000/posts/'+id,
-        method: 'PUT',
-        data:{
-            name:name
-        },
-        success: function(result){
-            console.log(result);
-            alert("post güncellendi")
-            
-            
-
-        },
-        error: function(err){
-            console.log(err);
-        }
-    })   
-}
 
 
 // document.getElementById("updatebtn").addEventListener("click",function(){
