@@ -100,7 +100,7 @@ function popupOpen(id)
             document.querySelector(".popup").style.display="flex";
             // localStorage.setItem("dataupdateid",result.id);
             // localStorage.setItem("dataupdate",result.name);
-            // location.href="C:/Users/ISMAILBAYRAM/Desktop/deneme/update.html";
+            
             document.getElementById("updateId").value=result.id;
             document.getElementById("updatename").value=result.name;
 
