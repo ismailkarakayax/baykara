@@ -92,7 +92,7 @@ function popupOpen(id)
    
 
     $.ajax({
-        url: 'https://127.0.0.1:8000/v1/api/city/'+id,
+        url: 'https://127.0.0.1:8000/v1/api/city',
         type: "GET",
         dataType:'json',
         success: function(result){
@@ -100,10 +100,14 @@ function popupOpen(id)
             document.querySelector(".popup").style.display="flex";
             // localStorage.setItem("dataupdateid",result.id);
             // localStorage.setItem("dataupdate",result.name);
+            result.forEach(element => {
+                if(element.id==id)
+                {
+                    document.getElementById("updateId").value=element.id;
+                    document.getElementById("updatename").value=element.name;
+                }
+           });
             
-            document.getElementById("updateId").value=result.id;
-            document.getElementById("updatename").value=result.name;
-
         },
         error: function(err){
             console.log(err);
