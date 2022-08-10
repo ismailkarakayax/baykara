@@ -123,7 +123,7 @@ function popupClose()
 function UpdatePost()
 {
     var id=document.getElementById("updateId").value
-    var name=document.getElementById("updateTitle").value
+    var name=document.getElementById("updatename").value
 
     $.ajax({
         url: 'https://127.0.0.1:8000/v1/api/city/'+id,
