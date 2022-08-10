@@ -92,7 +92,7 @@ function popupOpen(id)
    
 
     $.ajax({
-        url: 'http://localhost:3000/posts/'+id,
+        url: 'https://127.0.0.1:8000/v1/api/city/'+id,
         type: "GET",
         dataType:'json',
         success: function(result){
@@ -114,4 +114,28 @@ function popupOpen(id)
 function popupClose()
 {
     document.querySelector(".popup").style.display="none";
+}
+
+function UpdatePost()
+{
+    var id=document.getElementById("updateId").value
+    var name=document.getElementById("updateTitle").value
+
+    $.ajax({
+        url: 'https://127.0.0.1:8000/v1/api/city/'+id,
+        method: 'PUT',
+        data:{
+           name:name
+        },
+        success: function(result){
+            console.log(result);
+            alert("post güncellendi")
+            
+            
+
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })   
 }
